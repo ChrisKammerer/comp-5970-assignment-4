@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BaseballService {
-  static const String baseUrl = 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/';
+  static const String baseUrl =
+      'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/';
 
   Future<List<TeamModel>> fetchTeams() async {
     final url = Uri.parse('${baseUrl}teams');
@@ -20,7 +21,7 @@ class BaseballService {
     }
   }
 
-  Future<List<EventModel>> fetchSchedule(int id) async {
+  Future<List<EventModel>> fetchSchedule(String id) async {
     final url = Uri.parse('${baseUrl}teams/$id/schedule');
 
     final response = await http.get(url);
@@ -34,4 +35,3 @@ class BaseballService {
     }
   }
 }
-

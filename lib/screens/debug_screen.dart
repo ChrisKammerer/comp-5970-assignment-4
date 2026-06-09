@@ -68,7 +68,7 @@ class _DebugScreenState extends State<DebugScreen> {
   void _testSchedule() async {
     try {
       setState(() => output = 'Loading schedule...');
-      final events = await service.fetchSchedule(1);
+      final events = await service.fetchSchedule('1');
       setState(() {
         output = 'Success! Loaded ${events.length} events:\n\n';
         for (var event in events.take(5)) {

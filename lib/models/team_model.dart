@@ -1,3 +1,5 @@
+import 'package:baseball_info/models/event_model.dart';
+
 class TeamModel {
   final String id;
   final String displayName;
@@ -23,13 +25,9 @@ class TeamModel {
 class TeamImageModel {
   final String url;
 
-  TeamImageModel({
-    required this.url,
-  });
+  TeamImageModel({required this.url});
 
   factory TeamImageModel.fromJson(Map<String, dynamic> json) {
-    return TeamImageModel(
-      url: json['href'],
-    );
+    return TeamImageModel(url: json['href']);
   }
 }
