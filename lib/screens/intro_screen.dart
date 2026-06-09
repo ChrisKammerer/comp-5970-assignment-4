@@ -39,10 +39,19 @@ class _IntroScreenState extends State<IntroScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          page.imagePath,
-                          height: 350,
-                          fit: BoxFit.cover,
+                        Card(
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.asset(
+                              page.imagePath,
+                              height: 350,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
 
                         SizedBox(height: 30),
@@ -51,7 +60,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           page.caption,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
