@@ -14,9 +14,6 @@ class _TeamSearchScreenState extends State<TeamSearchScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<BaseballProvider>().fetchTeams();
-    });
   }
 
   @override

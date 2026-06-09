@@ -20,6 +20,11 @@ class _IntroScreenState extends State<IntroScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<BaseballProvider>().loadIntroPages();
     });
+
+    // Fetch teams after intro pages are loaded to decrease wait time on team search screen
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<BaseballProvider>().fetchTeams();
+    });
   }
 
   @override
