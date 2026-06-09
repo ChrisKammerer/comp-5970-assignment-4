@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:baseball_info/providers/baseball_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:baseball_info/models/intro_page.dart';
+import 'team_search_screen.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -74,7 +75,12 @@ class _IntroScreenState extends State<IntroScreen> {
             Padding(
               padding: EdgeInsets.all(16),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TeamSearchScreen()),
+                  );
+                },
                 child: Text("Start Exploring"),
               ),
             ),
