@@ -10,7 +10,22 @@ class TeamScheduleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('${team.displayName} Schedule')),
+      appBar: AppBar(
+        title: Text(
+          '${team.displayName} Upcoming Schedule',
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+          maxLines: 2,
+          softWrap: true,
+        ),
+        actions: [
+          if (team.images.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(team.images.first.url),
+            ),
+        ],
+        toolbarHeight: 100,
+      ),
       body: Consumer<BaseballProvider>(
         builder: (context, provider, _) {
           if (provider.isLoadingSchedule) {
@@ -29,9 +44,14 @@ class TeamScheduleScreen extends StatelessWidget {
             itemCount: provider.schedule.length,
             itemBuilder: (context, index) {
               final event = provider.schedule[index];
-              return ListTile(
-                title: Text(event.name),
-                subtitle: Text(event.date),
+              return Column(
+                children: [
+                  ListTile(
+                    title: Text(event.name),
+                    subtitle: Text(event.date.toLocal().toString().substring(0, 19)),
+                  ),
+                  const Divider(),
+                ],
               );
             },
           );

@@ -13,8 +13,18 @@ class TeamCard extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: team.images.isNotEmpty
-            ? Image.network(team.images.first.url, width: 50, height: 50)
-            : null,
+            ? Image.network(
+                team.images.first.url,
+                width: 50,
+                height: 50,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return const Icon(Icons.sports_baseball);
+                },
+              )
+            : Icon(Icons.sports_baseball), // Fallback icon if no image is available
         title: Text(team.displayName),
         onTap: () {
           context.read<BaseballProvider>().fetchScheduleForTeam(team);

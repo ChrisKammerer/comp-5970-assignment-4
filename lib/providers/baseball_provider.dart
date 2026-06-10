@@ -62,6 +62,9 @@ class BaseballProvider extends ChangeNotifier {
 
     try {
       schedule = await baseballService.fetchSchedule(team.id);
+      // filter out past events
+      final now = DateTime.now().toUtc();
+      schedule = schedule.where((event) => event.date.isAfter(now)).toList();
     } catch (e) {
       errorMessage = 'Failed to fetch schedule';
     }
