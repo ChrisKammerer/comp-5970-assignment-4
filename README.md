@@ -1,6 +1,8 @@
 # baseball_info
 
-A new Flutter project.
+Run `flutter pub get` to get dependencies
+
+The ESPN API does not require an API key
 
 ## Getting Started
 
